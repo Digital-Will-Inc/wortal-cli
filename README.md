@@ -20,7 +20,8 @@ when you run `wortal install` and should be committed to your repository.
 
 #### `wortal install`
 
-Installs the Wortal CLI into your project. This command will create a `.wortal.json` file in the root of your project
+Installs the Wortal CLI into your project. This command will create a `.wortal.json` file in the root of your project.
+If you are using the CLI in a CI/CD workflow you can skip this step.
 
 ---
 
@@ -35,11 +36,17 @@ This needs to be a `.zip` archive with `index.html` at the root of the archive.
 |------------|-------------------------|----------|
 | `--bundle` | Path to the game bundle | Yes      |
 | `--notes`  | Release notes           | No       |
+| `--token`  | API token               | No       |
+| `--gameID` | Game ID                 | No       |
 
 #### Example
 
 ```bash
+// Dev environment
 wortal upload --bundle ./build.zip --notes "Initial release"
+
+// CI/CD workflow
+wortal upload --bundle ./build.zip --notes "$RELEASE_NOTES" --token "$WORTAL_API_TOKEN" --gameID "$WORTAL_GAME_ID"
 ```
 
 ---

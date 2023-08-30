@@ -6,8 +6,10 @@ import fs from "fs";
  *
  * - `--bundle` - The path to the bundle file. Must be a .zip file.
  * - `--notes` - Notes to be added to the upload.
+ * - `--token` - The token to use for authentication.
+ * - `--gameID` - The ID of the game to upload to.
  */
-const uploadArgs = ['--bundle', '--notes'];
+const uploadArgs = ['--bundle', '--notes', '--token', '--gameID'];
 
 /**
  * Uploads a game to Wortal.
@@ -17,13 +19,15 @@ const uploadArgs = ['--bundle', '--notes'];
 const uploadCommand = async function (args) {
     const bundle = args['bundle'];
     const notes = args['notes'];
+    const token = args['token'];
+    const gameID = args['gameID'];
 
     if (!bundle || !_isZipFile(bundle)) {
         console.error(`Invalid bundle file: ${bundle}. Must be a .zip file.`);
         process.exit(1);
     }
 
-    return await uploadAPI(bundle, notes);
+    return await uploadAPI(bundle, notes, token, gameID);
 }
 
 function _isZipFile(filePath) {

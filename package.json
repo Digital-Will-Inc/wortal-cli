@@ -1,6 +1,6 @@
 {
     "name": "@digital-will/wortal-cli",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "CLI utility for managing Wortal projects.",
     "homepage": "https://sdk.html5gameportal.com/",
     "bugs": "https://github.com/Digital-Will-Inc/wortal-cli/issues",
